@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace Xml\Util\Models;
 
-use Carbon\Carbon;
-
 class CobrancaNfe {
 
 
@@ -64,7 +62,10 @@ class CobrancaNfe {
 
                     $this->soma_dublicatas += (float) $duplicata_obj->valor;
 
-                    if( Carbon::parse($duplicata_obj->data_vencimento) < Carbon::now()){
+                    $vencimento = new \DateTime($duplicata_obj->data_vencimento);
+                    $agora = new \DateTime();
+
+                    if ($vencimento->diff($agora)->getTimestamp() < 0) {
                         $this->duplicata_vencida[] = $duplicata_obj;
                     }
 

@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace Xml\Util\Models;
 
-use Carbon\Carbon;
 
 class CabecalhoNfe {
 
@@ -88,8 +87,10 @@ class CabecalhoNfe {
         $return->modelo_nfe = $this->modelo_nfe;
         $return->serie = $this->serie;
         $return->numero_nfe = $this->numero_nfe;
-        $return->data_emissao = Carbon::parse( $this->data_emissao )->format('Y-m-d H:m:s');
-        $return->data_saida_entrada =  Carbon::parse( $this->data_saida_entrada )->format('Y-m-d H:m:s');
+        $data_emissao = new \DateTime($this->data_emissao);
+        $return->data_emissao = $data_emissao->format('Y-m-d H:i:s');
+        $data_saida_entrada = new \DateTime($this->data_saida_entrada);
+        $return->data_saida_entrada = $data_saida_entrada->format('Y-m-d H:i:s');
         $return->tipo_emissao = $this->tipo_emissao;
         $return->uf_inicio = $this->uf_inicio;
         $return->tipo_ambiente = $this->tipo_ambiente;

@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace Xml\Util\Models;
 
-use Carbon\Carbon;
-
 class CabecalhoCte {
 
     const TOMADOR_REMETENTE = 0;
@@ -127,7 +125,8 @@ class CabecalhoCte {
         $return->modelo_cte = $this->modelo_cte;
         $return->serie = $this->serie;
         $return->numero_cte = $this->numero_cte;
-        $return->data_emissao = Carbon::parse( $this->data_emissao )->format('Y-m-d H:m:s');
+        $data_emissao = new \DateTime($this->data_emissao);
+        $return->data_emissao = $data_emissao->format('Y-m-d H:i:s');
         $return->tipo_emissao = $this->tipo_emissao;
         $return->modal = $this->modal;
         $return->uf_inicio = $this->uf_inicio;
