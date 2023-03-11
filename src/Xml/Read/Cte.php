@@ -77,74 +77,109 @@ class Cte {
 
     }
 
-    public function getCabecalho(): object
+    public function getCabecalho(): object|bool
     {
 
-        $dados = new CabecalhoCte($this->xml_objct->infcte->ide);
-        return $dados->toObject();
+        if(isset($this->xml_objct->infcte->id)){
+            $dados = new CabecalhoCte($this->xml_objct->infcte->ide);
+            return $dados->toObject();
+        }
+
+        return false;
 
     }
 
-    public function getEmitente(): object
+    public function getEmitente(): object|bool
     {
       
-        $entidade = new Entidade($this->xml_objct->infcte->emit, 'emit');
-        return $entidade->toObject();
+        if(isset($this->xml_objct->infcte->emit)){
+            $entidade = new Entidade($this->xml_objct->infcte->emit, 'emit');
+            return $entidade->toObject();
+        }
+
+        return false;
+
+    }
+
+    public function getRemetente(): object|bool
+    {
+      
+        if(isset($this->xml_objct->infcte->rem)){
+            $entidade = new Entidade($this->xml_objct->infcte->rem, 'reme');
+            return $entidade->toObject();
+        }
+
+        return false;
  
     }
 
-    public function getRemetente(): object
+    public function getDestinatario():object|bool
     {
       
-        $entidade = new Entidade($this->xml_objct->infcte->rem, 'reme');
-        return $entidade->toObject();
+        if(isset($this->xml_objct->infcte->dest)){
+            $entidade = new Entidade($this->xml_objct->infcte->dest, 'dest');
+            return $entidade->toObject();
+        }
+
+        return false;
  
     }
 
-    public function getDestinatario(): object
+    public function getExpedidor():object|bool
     {
       
-        $entidade = new Entidade($this->xml_objct->infcte->dest, 'dest');
-        return $entidade->toObject();
+        if(isset($this->xml_objct->infcte->exped)){
+            $entidade = new Entidade($this->xml_objct->infcte->exped, 'exped');
+            return $entidade->toObject();
+        }
+
+        return false;
  
     }
 
-    public function getExpedidor(): object
+    public function getRecebedor():object|bool
     {
       
-        $entidade = new Entidade($this->xml_objct->infcte->exped, 'exped');
-        return $entidade->toObject();
+        if(isset($this->xml_objct->infcte->receb)){
+            $entidade = new Entidade($this->xml_objct->infcte->receb, 'receb');
+            return $entidade->toObject();
+        }
+
+        return false;
  
     }
 
-    public function getRecebedor(): object
+    public function getServicos(): object|bool
     {
-      
-        $entidade = new Entidade($this->xml_objct->infcte->receb, 'receb');
-        return $entidade->toObject();
+        
+        if(isset($this->xml_objct->infcte->receb)){
+            $entidade = new Servicos($this->xml_objct->infcte->vprest);
+            return $entidade->toObject();
+        }
+
+        return false;
  
     }
 
-    public function getServicos(): object
+    public function getImposto(): object|bool
     {
-      
-        $entidade = new Servicos($this->xml_objct->infcte->vprest);
-        return $entidade->toObject();
- 
-    }
 
-    public function getImposto(): object
-    {
-      
-        $entidade = new Imposto($this->xml_objct->infcte->imp);
-        return $entidade->toObject();
- 
+        if(isset($this->xml_objct->infcte->imp)){
+            $entidade = new Imposto($this->xml_objct->infcte->imp);
+            return $entidade->toObject();
+        }
+
+        return false;
+
     }
 
     public function getChave(): string
     {   
 
-        return trim( ( string ) $this->xml_objct_raiz->protcte->infprot->chcte );
- 
+        if(isset($this->xml_objct_raiz->protcte->infprot->chc)){
+            return trim( ( string ) $this->xml_objct_raiz->protcte->infprot->chcte );
+        }
+        return "";
+
     }
 }

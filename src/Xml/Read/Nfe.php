@@ -55,89 +55,131 @@ class Nfe {
         return $cabecalho;
     }
 
-    public function getCabecalho(): object
+    public function getCabecalho(): object|bool
     {   
-        $dados = new CabecalhoNfe($this->xml_objct->infnfe->ide);
-        return $dados->toObject();
+        if(isset($this->xml_objct->infnfe->ide)){
+            $dados = new CabecalhoNfe($this->xml_objct->infnfe->ide);
+            return $dados->toObject();
+        }
+
+        return false;
 
     }
 
-    public function getEmitente(): object
+    public function getEmitente(): object|bool
     {
       
-        $entidade = new Entidade($this->xml_objct->infnfe->emit, 'emit');
-        return $entidade->toObject();
+        if(isset($this->xml_objct->infnfe->emit)){
+            $entidade = new Entidade($this->xml_objct->infnfe->emit, 'emit');
+            return $entidade->toObject();
+        }
+
+        return false;
+    }
+
+    public function getRemetente(): object|bool
+    {
+
+        if(isset($this->xml_objct->infnfe->rem)){
+            $entidade = new Entidade($this->xml_objct->infnfe->rem, 'rem');
+            return $entidade->toObject();
+        }
+
+        return false;
+    }
+
+    public function getDestinatario(): object|bool
+    {
+
+        if(isset($this->xml_objct->infnfe->dest)){
+            $entidade = new Entidade($this->xml_objct->infnfe->dest, 'dest');
+            return $entidade->toObject();
+        }
+
+        return false;
  
     }
 
-    public function getRemetente(): object
+    public function getExpedidor(): object|bool
     {
       
-        $entidade = new Entidade($this->xml_objct->infnfe->rem, 'reme');
-        return $entidade->toObject();
+        if(isset($this->xml_objct->infnfe->exped)){
+            $entidade = new Entidade($this->xml_objct->infnfe->exped, 'exped');
+            return $entidade->toObject();
+        }
+
+        return false;
  
     }
 
-    public function getDestinatario(): object
+    public function getRecebedor(): object|bool
     {
       
-        $entidade = new Entidade($this->xml_objct->infnfe->dest, 'dest');
-        return $entidade->toObject();
+        if(isset($this->xml_objct->infnfe->receb)){
+            $entidade = new Entidade($this->xml_objct->infnfe->receb, 'receb');
+            return $entidade->toObject();
+        }
+
+        return false;
  
     }
 
-    public function getExpedidor(): object
+    public function getServicos(): object|bool
     {
       
-        $entidade = new Entidade($this->xml_objct->infnfe->exped, 'exped');
-        return $entidade->toObject();
+        if(isset($this->xml_objct->infnfe->vprest)){
+            $entidade = new Servicos($this->xml_objct->infnfe->vprest);
+            return $entidade->toObject();
+        }
+
+        return false;
  
     }
 
-    public function getRecebedor(): object
+    public function getTranspotadora(): object|bool
     {
       
-        $entidade = new Entidade($this->xml_objct->infnfe->receb, 'receb');
-        return $entidade->toObject();
+        if(isset($this->xml_objct->infnfe->transp)){
+            $entidade = new Transportadora($this->xml_objct->infnfe->transp);
+            return $entidade->toObject();
+        }
+
+        return false;
  
     }
 
-    public function getServicos(): object
+    public function getTotal(): object|bool
     {
       
-        $entidade = new Servicos($this->xml_objct->infnfe->vprest);
-        return $entidade->toObject();
+        if(isset($this->xml_objct->infnfe->total)){
+            $entidade = new TotalNfe($this->xml_objct->infnfe->total);
+            return $entidade->toObject();
+        }
+
+        return false;
  
     }
 
-    public function getTranspotadora(): object
+    public function getCobranca(): object|bool
     {
       
-        $entidade = new Transportadora($this->xml_objct->infnfe->transp);
-        return $entidade->toObject();
- 
-    }
+        if(isset($this->xml_objct->infnfe->cobr)){
+            $entidade = new CobrancaNfe($this->xml_objct->infnfe->cobr);
+            return $entidade->toObject();
+        }
 
-    public function getTotal(): object
-    {
-      
-        $entidade = new TotalNfe($this->xml_objct->infnfe->total);
-        return $entidade->toObject();
- 
-    }
+        return false;
 
-    public function getCobranca(): object
-    {
-      
-        $entidade = new CobrancaNfe($this->xml_objct->infnfe->cobr);
-        return $entidade->toObject();
- 
     }
 
     public function getChave(): string
     {   
 
-        return trim( ( string ) $this->xml_objct_raiz->protnfe->infprot->chnfe );
- 
+        if(isset($this->xml_objct_raiz->protnfe->infprot->chnf)){
+            return trim( ( string ) $this->xml_objct_raiz->protnfe->infprot->chnfe );
+        }
+
+        return "";
+      
     }
 }
