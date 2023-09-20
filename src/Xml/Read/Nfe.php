@@ -175,7 +175,7 @@ class Nfe {
     public function getChave(): string
     {   
 
-        if(isset($this->xml_objct_raiz->protnfe->infprot->chnf)){
+        if(isset($this->xml_objct_raiz->protnfe->infprot->chnfe)){
             return trim( ( string ) $this->xml_objct_raiz->protnfe->infprot->chnfe );
         }
 
