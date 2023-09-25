@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Xml\Util\Models;
+namespace Xml\Util\Models\Nfe;
 
 use Xml\Util\Models\Traits\Atributes;
 

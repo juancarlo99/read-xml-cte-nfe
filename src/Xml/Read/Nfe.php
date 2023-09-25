@@ -4,9 +4,9 @@ namespace Xml\Read;
 
 use Xml\Util\Models\TotalNfe;
 use Xml\Util\Util;
-use Xml\Util\Models\Entidade;
-use Xml\Util\Models\CabecalhoNfe;
-use Xml\Util\Models\Servicos;
+use Xml\Util\Models\Nfe\Entidade;
+use Xml\Util\Models\Nfe\IdentificacaoNFE;
+use Xml\Util\Models\Servicos\Nfe\Servicos;
 use Xml\Util\Models\Transportadora;
 use Xml\Util\Models\CobrancaNfe;
 
@@ -16,6 +16,9 @@ class Nfe {
 
     private object $xml_objct;
     private object $xml_objct_raiz;
+
+    public object $identificacao_nfe;
+    public object $emitente;
 
     function __construct( string $xml_file){
 
@@ -38,27 +41,38 @@ class Nfe {
     }
 
     public function all(): object
-    {
+    {   
+        $resultado = new \stdClass();
 
-        $cabecalho = $this->getCabecalho();
-        $cabecalho->emitente = $this->getEmitente();
-        $cabecalho->destinatario = $this->getDestinatario();
+        $this->identificacao_nfe = $this->getIdentificacaoNFE();
+        $this->emitente = $this->getEmitente();
+        $this->destinatario = $this->getDestinatario();
+        $this->transportadora = $this->getTranspotadora();
+        $this->expedidor = $this->getExpedidor();
 
-        $cabecalho->transportadora = $this->getTranspotadora();
-        $cabecalho->total = $this->getTotal();
-        $cabecalho->cobranca = $this->getCobranca();
+        $this->servicos = $this->getServicos();
 
+        $this->total = $this->getTotal();
+        $this->cobranca = $this->getCobranca();
+        $this->chave = $this->getChave();
 
+        $resultado->identificacao_nfe = $this->identificacao_nfe;
+        $resultado->emitente = $this->emitente;
+        $resultado->destinatario = $this->destinatario;
+        $resultado->servicos = $this->servicos;
+        $resultado->transportadora = $this->transportadora;
+        $resultado->expedidor = $this->expedidor;
+        $resultado->total = $this->total;
+        $resultado->cobranca = $this->cobranca;
+        $resultado->chave = $this->chave;
 
-        $cabecalho->chave = $this->getChave();
-
-        return $cabecalho;
+        return $resultado;
     }
 
-    public function getCabecalho(): object|bool
+    public function getIdentificacaoNFE(): object|bool
     {   
         if(isset($this->xml_objct->infnfe->ide)){
-            $dados = new CabecalhoNfe($this->xml_objct->infnfe->ide);
+            $dados = new IdentificacaoNFE($this->xml_objct->infnfe->ide);
             return $dados->toObject();
         }
 
@@ -127,8 +141,8 @@ class Nfe {
     public function getServicos(): object|bool
     {
       
-        if(isset($this->xml_objct->infnfe->vprest)){
-            $entidade = new Servicos($this->xml_objct->infnfe->vprest);
+        if(isset($this->xml_objct->infnfe->det)){
+            $entidade = new Servicos($this->xml_objct->infnfe->det);
             return $entidade->toObject();
         }
 

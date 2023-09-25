@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Xml\Util\Models;
+namespace Xml\Util\Models\Nfe;
 
-use Xml\Util\Models\Endereco;
+use Xml\Util\Models\Nfe\Endereco;
 use Xml\Util\Models\Traits\Atributes;
 
 
