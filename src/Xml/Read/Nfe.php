@@ -6,7 +6,7 @@ use Xml\Util\Models\TotalNfe;
 use Xml\Util\Util;
 use Xml\Util\Models\Nfe\Entidade;
 use Xml\Util\Models\Nfe\IdentificacaoNFE;
-use Xml\Util\Models\Servicos\Nfe\Servicos;
+use Xml\Util\Models\Nfe\Servicos\Servicos;
 use Xml\Util\Models\Transportadora;
 use Xml\Util\Models\CobrancaNfe;
 
