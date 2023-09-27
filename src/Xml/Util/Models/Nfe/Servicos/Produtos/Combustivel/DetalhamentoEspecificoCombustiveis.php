@@ -57,25 +57,4 @@ class DetalhamentoEspecificoCombustiveis {
         return $grupoEncerranteCombustivel->toObject();
     }
 
-    /**
-    * Faz a converssão de classe php para Object.
-    *
-    *
-    * @return object
-    */
-    public function toObject(){
-        $return = new \stdClass();
-        $return->tipo_armamento = $this->tipo_armamento;
-        $return->numero_serie_armamento = $this->numero_serie_armamento;
-        $return->numero_serie_cano = $this->numero_serie_cano;
-        $return->descricao = $this->descricao;
-        $return->percentual_petroleo = $this->percentual_petroleo;
-        $return->percentual_gas_natural_nacional = $this->percentual_gas_natural_nacional;
-        $return->percentual_gas_natural_importado = $this->percentual_gas_natural_importado;
-        $return->valor_partida = $this->valor_partida;
-        $return->percentual_indice_mistura_biodiesel = $this->percentual_indice_mistura_biodiesel;
-
-        return $return;
-    }
-
 }

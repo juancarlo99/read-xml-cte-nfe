@@ -26,20 +26,4 @@ class DetalhamentoEspecificoArmamento {
         ]);
     }
 
-    /**
-    * Faz a converssão de classe php para Object.
-    *
-    *
-    * @return object
-    */
-    public function toObject(){
-        $return = new \stdClass();
-        $return->tipo_armamento = $this->tipo_armamento;
-        $return->numero_serie_armamento = $this->numero_serie_armamento;
-        $return->numero_serie_cano = $this->numero_serie_cano;
-        $return->descricao = $this->descricao;
-
-        return $return;
-    }
-
 }

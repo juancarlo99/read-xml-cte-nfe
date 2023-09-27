@@ -1,10 +1,12 @@
 <?php
 
 namespace Xml\Util\Models\Nfe\Enums\ICMS;
+use Xml\Util\Models\Nfe\Enums\Traits\EnumTraits;
 
 class OrigemMercadoria
 {
 
+    use EnumTraits;
     /**
      * Nacional - Exceto as indicadas nos códigos 3,4,5 e 8
      */
@@ -50,29 +52,16 @@ class OrigemMercadoria
      */
     const NACIONAL_CONTEUDO_IMPORTACAO_70 = 8;
 
-    public function getDescricao($codigo): string
-    {
-        switch ($codigo) {
-            case self::NACIONAL:
-                return 'Nacional - Exceto as indicadas nos códigos 3,4,5 e 8';
-            case self::ESTRANGEIRA_IMPORTACAO_DIRETA:
-                return 'Estrangeira - Importação Direta';
-            case self::ESTRANGEIRA_ADQ_MERCADO_INTERNO:
-                return 'Estrangeira - Adq. no mercado interno';
-            case self::NACIONAL_CONTEUDO_IMPORTACAO_40_70:
-                return 'Nacional - com Conteúdo de Importação superior a 40% e inferior ou igual a 70%';
-            case self::NACIONAL_PRODUCAO_CONFORMIDADE:
-                return 'Nacional - cuja produção tenha sido feita em conformidade';
-            case self::NACIONAL_CONTEUDO_IMPORTACAO_40:
-                return 'Nacional - com Conteúdo de Importação inferior ou igual a 40%';
-            case self::ESTRANGEIRA_IMPORTACAO_DIRETA_SEM_SIMILAR_NACIONAL:
-                return 'Estrangeira - Imp. direta, sem similar nacional, na lista da CAMEX';
-            case self::ESTRANGEIRA_ADQ_INTERNO_SEM_SIMILAR_NACIONAL:
-                return 'Estrangeira - Adq. interno, sem similar nacional, na lista da CAMEX';
-            case self::NACIONAL_CONTEUDO_IMPORTACAO_70:
-                return 'Nacional - Mercadoria ou bem com Conteúdo de Importação superior a 70%';
-            default:
-                return '';
-        }
-    }
+    const DESCRICOES = [
+        self::NACIONAL => 'Nacional - Exceto as indicadas nos códigos 3,4,5 e 8',
+        self::ESTRANGEIRA_IMPORTACAO_DIRETA => 'Estrangeira - Importação Direta',
+        self::ESTRANGEIRA_ADQ_MERCADO_INTERNO => 'Estrangeira - Adq. no mercado interno',
+        self::NACIONAL_CONTEUDO_IMPORTACAO_40_70 => 'Nacional - com Conteúdo de Importação superior a 40% e inferior ou igual a 70%',
+        self::NACIONAL_PRODUCAO_CONFORMIDADE => 'Nacional - cuja produção tenha sido feita em conformidade',
+        self::NACIONAL_CONTEUDO_IMPORTACAO_40 => 'Nacional - com Conteúdo de Importação inferior ou igual a 40%',
+        self::ESTRANGEIRA_IMPORTACAO_DIRETA_SEM_SIMILAR_NACIONAL => 'Estrangeira - Imp. direta, sem similar nacional, na lista da CAMEX',
+        self::ESTRANGEIRA_ADQ_INTERNO_SEM_SIMILAR_NACIONAL => 'Estrangeira - Adq. interno, sem similar nacional, na lista da CAMEX',
+        self::NACIONAL_CONTEUDO_IMPORTACAO_70 => 'Nacional - Mercadoria ou bem com Conteúdo de Importação superior a 70%',
+    ];
+    
 }

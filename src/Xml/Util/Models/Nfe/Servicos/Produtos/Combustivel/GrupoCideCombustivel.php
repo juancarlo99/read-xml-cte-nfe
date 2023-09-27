@@ -29,20 +29,4 @@ class GrupoCideCombustivel {
             'valor' => 'vcide',
         ]);
     }
-
-    /**
-    * Faz a converssão de classe php para Object.
-    *
-    *
-    * @return object
-    */
-    public function toObject(){
-        $return = new \stdClass();
-        $return->bc_da_cide = $this->bc_da_cide;
-        $return->valor_aliquota = $this->valor_aliquota;
-        $return->valor = $this->valor;
-
-        return $return;
-    }
-
 }

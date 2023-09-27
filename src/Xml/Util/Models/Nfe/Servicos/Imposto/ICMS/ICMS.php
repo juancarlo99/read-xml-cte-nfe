@@ -10,6 +10,7 @@ class ICMS {
     use Atributes , ICMSTraits;
 
     private object $xml;
+    private string $grupo;
 
 
     protected $tipos_int = [
@@ -37,9 +38,10 @@ class ICMS {
     
 
 
-    function __construct( object $xml){
+    function __construct( object $xml, string $grupo){
 
         $this->xml = $xml;
+        $this->grupo = $grupo;
 
         $this->getAtribute([
             'origem_mercadoria' => 'orig',

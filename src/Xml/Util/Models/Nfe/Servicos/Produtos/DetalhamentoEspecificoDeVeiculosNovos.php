@@ -80,40 +80,6 @@ class DetalhamentoEspecificoDeVeiculosNovos {
         ]);
     }
 
-    /**
-    * Faz a converssão de classe php para Object.
-    *
-    *
-    * @return object
-    */
-    public function toObject(){
-        $return = new \stdClass();
-        $return->tipo_operacao = $this->tipo_operacao;
-        $return->chassi = $this->chassi;
-        $return->codigo_cor = $this->codigo_cor;
-        $return->descricao_cor = $this->descricao_cor;
-        $return->potencia_motor = $this->potencia_motor;
-        $return->cilindradas = $this->cilindradas;
-        $return->peso_liquido = $this->peso_liquido;
-        $return->peso_bruto = $this->peso_bruto;
-        $return->numero_serie = $this->numero_serie;
-        $return->tipo_combustivel = $this->tipo_combustivel;
-        $return->numero_motor = $this->numero_motor;
-        $return->capacidade_maxima_tracao = $this->capacidade_maxima_tracao;
-        $return->distancia_eixos = $this->distancia_eixos;
-        $return->ano_modelo = $this->ano_modelo;
-        $return->ano_fabricacao = $this->ano_fabricacao;
-        $return->tipo_pintura = $this->tipo_pintura;
-        $return->tipo_veiculo = $this->tipo_veiculo;
-        $return->especie_veiculo = $this->especie_veiculo;
-        $return->condicao_do_vin = $this->condicao_do_vin;
-        $return->condicao_do_veiculo = $this->condicao_do_veiculo;
-        $return->codigo_marca_modelo = $this->codigo_marca_modelo;
-        $return->codigo_cor_denatran = $this->codigo_cor_denatran;
-        $return->lotacao = $this->lotacao;
-        $return->restricao = $this->restricao;
 
-        return $return;
-    }
 
 }

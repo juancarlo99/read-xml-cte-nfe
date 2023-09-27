@@ -52,27 +52,4 @@ class Endereco {
 
     }
 
-    /**
-    * Faz a converssão de classe php para Object.
-    *
-    *
-    * @return object
-    */
-    public function toObject(){
-        $return = new \stdClass();
-        $return->logradouro = $this->logradouro;
-        $return->numero = $this->numero;
-        $return->bairro = $this->bairro;
-        $return->codigo_municipio = $this->codigo_municipio;
-        $return->nome_municipio = $this->nome_municipio;
-        $return->codigo_pais = $this->codigo_pais;
-        $return->nome_pais = $this->nome_pais;
-        $return->cep = $this->cep;
-        $return->uf = $this->uf;
-        $return->fone = $this->fone;
-        $return->email = $this->email;
-
-        return $return;
-    }
-
 }

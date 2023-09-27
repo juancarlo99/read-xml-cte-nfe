@@ -59,8 +59,10 @@ class IdentificacaoNFE {
 
     ];
 
-    protected $tipos_float = [
-
+    protected $tipos_data = [
+        'data_emissao',
+        'data_saida_entrada',
+        'data_entrada_contingencia',
     ];
 
 
@@ -101,53 +103,5 @@ class IdentificacaoNFE {
 
     }
 
-    /**
-    * Faz a converssão de classe php para Object.
-    *
-    *
-    * @return object
-    */
-    public function toObject(){
-        $return = new \stdClass();
-
-        $data_emissao = new \DateTime($this->data_emissao);
-        $return->data_emissao = $data_emissao->format('Y-m-d H:i:s');
-        $data_saida_entrada = new \DateTime($this->data_saida_entrada);
-        $return->data_saida_entrada = $data_saida_entrada->format('Y-m-d H:i:s');
-
-        $return->codigo_numerico = $this->codigo_numerico;
-        $return->uf = $this->uf;
-        $return->cfop = $this->cfop;
-        $return->natureza_operacao = $this->natureza_operacao;
-        $return->modelo_nfe = $this->modelo_nfe;
-        $return->serie = $this->serie;
-        $return->numero_nfe = $this->numero_nfe;
-        $return->data_emissao = $this->data_emissao;
-        $return->fuso_horario = $this->fuso_horario;
-        $return->data_saida_entrada = $this->data_saida_entrada;
-        $return->tipo_operacao = $this->tipo_operacao;
-        $return->local_destino_operacao = $this->local_destino_operacao;
-        $return->operacao_consumidor_final = $this->operacao_consumidor_final;
-        $return->operacao_presenca_comprador = $this->operacao_presenca_comprador;
-        $return->indentificador_de_intermediador = $this->indentificador_de_intermediador;
-        $return->codigo_municipio_icms = $this->codigo_municipio_icms;
-        $return->tipo_impressao = $this->tipo_impressao;
-        $return->tipo_emissao = $this->tipo_emissao;
-        $return->tipo_ambiente = $this->tipo_ambiente;
-        $return->Justificativa_entrada_contingencia = $this->Justificativa_entrada_contingencia;
-        $return->data_entrada_contingencia = $this->data_entrada_contingencia;
-        $return->finalidade_emissao = $this->finalidade_emissao;
-        $return->email_para_recebimento_arquivos = $this->email_para_recebimento_arquivos;
-        $return->numero_pedido = $this->numero_pedido;
-        $return->processo_emissao = $this->processo_emissao;
-        $return->versao_processo_emissao = $this->versao_processo_emissao;
-        $return->digito_verificador = $this->digito_verificador;
-
-        return $return;
-    }
-
-    public function toArray(){
-        return get_object_vars($this->toObject());
-    }
 
 }

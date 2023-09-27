@@ -1,9 +1,12 @@
 <?php
 
 namespace Xml\Util\Models\Nfe\Enums\ICMS;
+use Xml\Util\Models\Nfe\Enums\Traits\EnumTraits;
 
 class modalidadeDeDeterminacaoDaBCDoICMSSt
 {
+
+    use EnumTraits;
 
     /**
      * Preço tabelado ou máximo sugerido
@@ -40,28 +43,15 @@ class modalidadeDeDeterminacaoDaBCDoICMSSt
      */
     const VALOR_DA_OPERACAO = 6;
 
+    const DESCRICOES = [
+        self::PRECO_TABELADO_MAXIMO_SUGERIDO => 'Preço tabelado ou máximo sugerido',
+        self::LISTA_NEGATIVA => 'Lista Negativa (valor)',
+        self::LISTA_POSITIVA => 'Lista Positiva (valor)',
+        self::LISTA_NEUTRA => 'Lista Neutra (valor)',
+        self::MARGEM_VALOR_AGREGADO => 'Margem Valor Agregado (%)',
+        self::PAUTA => 'Pauta (valor)',
+        self::VALOR_DA_OPERACAO => 'Valor da Operação',
+    ];
 
-    public function getDescricao(int $codigo): string
-    {
-        switch ($codigo) {
-            case self::PRECO_TABELADO_MAXIMO_SUGERIDO:
-                return 'Preço tabelado ou máximo sugerido';
-            case self::LISTA_NEGATIVA:
-                return 'Lista Negativa (valor)';
-            case self::LISTA_POSITIVA:
-                return 'Lista Positiva (valor)';
-            case self::LISTA_NEUTRA:
-                return 'Lista Neutra (valor)';
-            case self::MARGEM_VALOR_AGREGADO:
-                return 'Margem Valor Agregado (%)';
-            case self::PAUTA:
-                return 'Pauta (valor)';
-            case self::VALOR_DA_OPERACAO:
-                return 'Valor da Operação';
-            default:
-                return '';
-            
-        }
-    }
 
 }

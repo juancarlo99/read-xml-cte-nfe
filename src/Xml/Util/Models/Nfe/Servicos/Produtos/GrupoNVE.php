@@ -20,17 +20,4 @@ class GrupoNVE {
         ]);
     }
 
-    /**
-    * Faz a converssão de classe php para Object.
-    *
-    *
-    * @return object
-    */
-    public function toObject(){
-        $return = new \stdClass();
-        $return->nomeclatura_valor_aduaneiro_e_estatistico = $this->nomeclatura_valor_aduaneiro_e_estatistico;
-
-        return $return;
-    }
-
 }

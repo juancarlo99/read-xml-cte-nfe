@@ -28,20 +28,5 @@ class GrupoAdicoesNFE {
         ]);
     }
 
-    /**
-    * Faz a converssão de classe php para Object.
-    *
-    *
-    * @return object
-    */
-    public function toObject(){
-        $return = new \stdClass();
-        $return->numero_adicao = $this->numero_adicao;
-        $return->numero_sequencial = $this->numero_sequencial;
-        $return->codigo_fabricante_estrangeiro = $this->codigo_fabricante_estrangeiro;
-        $return->valor_desconto_adicao = $this->valor_desconto_adicao;
-
-        return $return;
-    }
 
 }

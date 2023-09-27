@@ -65,32 +65,5 @@ class Entidade {
         $this->endereco = new Endereco( $this->xml->$type );
 
     }
-
-    /**
-    * Faz a converssão de classe php para Object.
-    *
-    *
-    * @return object
-    */
-    public function toObject(){
-        $return = new \stdClass();
-        $return->cnpj = $this->cnpj;
-        $return->iscricao_estadual = $this->iscricao_estadual;
-        $return->nome = $this->nome;
-        $return->fone = $this->fone;
-        $return->codigo_regime_tributario = $this->codigo_regime_tributario;
-        $return->email = $this->email;
-        $return->inscricao_municipal = $this->inscricao_municipal;
-        $return->cnae = $this->cnae;
-
-        $return->endereco = $this->endereco->toObject();
-
-        return $return;
-    }
-
-    public function toArray(){
-        return get_object_vars($this->toObject());
-    }
     
-
 }

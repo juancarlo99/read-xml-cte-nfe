@@ -1,9 +1,12 @@
 <?php
 
 namespace Xml\Util\Models\Nfe\Enums\ICMS;
+use Xml\Util\Models\Nfe\Enums\Traits\EnumTraits;
 
 class MotivoDesoneracaoDoICMSST
 {
+
+    use EnumTraits;
     /**
      * Uso na agropecuária
      */
@@ -20,22 +23,11 @@ class MotivoDesoneracaoDoICMSST
     const ORGAO_DE_FOMENTO_E_DESENVOLVIMENTO_AGROPECUARIO = 12;
    
 
-    public function getDescricao(int $codigo): string
-    {
-        switch ($codigo) {
-            case self::USO_NA_AGROPECUARIA:
-                return 'Uso na agropecuária';
-                break;
-            case self::OUTROS:
-                return 'Outros';
-                break;
-            case self::ORGAO_DE_FOMENTO_E_DESENVOLVIMENTO_AGROPECUARIO:
-                return 'Órgão de fomento e desenvolvimento agropecuário';
-                break;
-            default:
-                return '';
-                break;
-        }
-    }
-
+    const DESCRICOES = [
+        self::USO_NA_AGROPECUARIA => 'Uso na agropecuária',
+        self::OUTROS => 'Outros',
+        self::ORGAO_DE_FOMENTO_E_DESENVOLVIMENTO_AGROPECUARIO => 'Órgão de fomento e desenvolvimento agropecuário',
+    ];
+    
+    
 }

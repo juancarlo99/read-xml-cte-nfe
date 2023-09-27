@@ -2,13 +2,13 @@
 
 namespace Xml\Read;
 
-use Xml\Util\Models\TotalNfe;
+use Xml\Util\Models\Nfe\Cobranca\Cobranca;
+use Xml\Util\Models\Nfe\Totais\Totais;
 use Xml\Util\Util;
 use Xml\Util\Models\Nfe\Entidade;
 use Xml\Util\Models\Nfe\IdentificacaoNFE;
 use Xml\Util\Models\Nfe\Servicos\Servicos;
-use Xml\Util\Models\Transportadora;
-use Xml\Util\Models\CobrancaNfe;
+use Xml\Util\Models\Nfe\Transporte\Transporte;
 
 
 class Nfe {
@@ -44,27 +44,25 @@ class Nfe {
     {   
         $resultado = new \stdClass();
 
+        $this->chave = $this->getChave();
         $this->identificacao_nfe = $this->getIdentificacaoNFE();
         $this->emitente = $this->getEmitente();
         $this->destinatario = $this->getDestinatario();
-        $this->transportadora = $this->getTranspotadora();
         $this->expedidor = $this->getExpedidor();
-
         $this->servicos = $this->getServicos();
-
-        $this->total = $this->getTotal();
+        $this->totais = $this->getTotal();
         $this->cobranca = $this->getCobranca();
-        $this->chave = $this->getChave();
+        $this->transporte = $this->getTransporte();
 
+        $resultado->chave = $this->chave;
         $resultado->identificacao_nfe = $this->identificacao_nfe;
         $resultado->emitente = $this->emitente;
         $resultado->destinatario = $this->destinatario;
         $resultado->servicos = $this->servicos;
-        $resultado->transportadora = $this->transportadora;
         $resultado->expedidor = $this->expedidor;
-        $resultado->total = $this->total;
+        $resultado->totais = $this->totais;
         $resultado->cobranca = $this->cobranca;
-        $resultado->chave = $this->chave;
+        $resultado->transporte = $this->transporte;
 
         return $resultado;
     }
@@ -150,12 +148,12 @@ class Nfe {
  
     }
 
-    public function getTranspotadora(): object|bool
+    public function getTransporte(): object|bool
     {
       
         if(isset($this->xml_objct->infnfe->transp)){
-            $entidade = new Transportadora($this->xml_objct->infnfe->transp);
-            return $entidade->toObject();
+            $transporte = new Transporte($this->xml_objct->infnfe->transp);
+            return $transporte->toObject();
         }
 
         return false;
@@ -166,8 +164,8 @@ class Nfe {
     {
       
         if(isset($this->xml_objct->infnfe->total)){
-            $entidade = new TotalNfe($this->xml_objct->infnfe->total);
-            return $entidade->toObject();
+            $total = new Totais($this->xml_objct->infnfe->total);
+            return $total->toObject();
         }
 
         return false;
@@ -178,7 +176,7 @@ class Nfe {
     {
       
         if(isset($this->xml_objct->infnfe->cobr)){
-            $entidade = new CobrancaNfe($this->xml_objct->infnfe->cobr);
+            $entidade = new Cobranca($this->xml_objct->infnfe->cobr);
             return $entidade->toObject();
         }
 
@@ -189,7 +187,7 @@ class Nfe {
     public function getChave(): string
     {   
 
-        if(isset($this->xml_objct_raiz->protnfe->infprot->chnf)){
+        if(isset($this->xml_objct_raiz->protnfe->infprot->chnfe)){
             return trim( ( string ) $this->xml_objct_raiz->protnfe->infprot->chnfe );
         }
 

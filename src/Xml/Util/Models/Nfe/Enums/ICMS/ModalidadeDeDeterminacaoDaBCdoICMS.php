@@ -1,9 +1,13 @@
 <?php
 
 namespace Xml\Util\Models\Nfe\Enums\ICMS;
+use Xml\Util\Models\Nfe\Enums\Traits\EnumTraits;
 
 class ModalidadeDeDeterminacaoDaBCdoICMS
 {
+
+    use EnumTraits;
+
     /**
      * Margem Valor Agregado (%)
      */
@@ -24,20 +28,11 @@ class ModalidadeDeDeterminacaoDaBCdoICMS
      */
     const VALOR_DA_OPERACAO = 3;
 
-    public function getDescricao(int $codigo): string
-    {
-        switch ($codigo) {
-            case self::MARGEM_VALOR_AGREGADO:
-                return 'Margem Valor Agregado (%)';
-            case self::PAUTA:
-                return 'Pauta (Valor)';
-            case self::PRECO_TABELADO_MAX:
-                return 'Preço Tabelado Máx. (valor)';
-            case self::VALOR_DA_OPERACAO:
-                return 'Valor da operação';
-            default:
-                return '';
-        }
-    }
+    const DESCRICOES = [
+        self::MARGEM_VALOR_AGREGADO => 'Margem Valor Agregado (%)',
+        self::PAUTA => 'Pauta (Valor)',
+        self::PRECO_TABELADO_MAX => 'Preço Tabelado Máx. (valor)',
+        self::VALOR_DA_OPERACAO => 'Valor da operação',
+    ];
 
 }

@@ -1,9 +1,12 @@
 <?php
 
 namespace Xml\Util\Models\Nfe\Enums\ICMS;
+use Xml\Util\Models\Nfe\Enums\Traits\EnumTraits;
 
 class TributacaoICMS
 {
+
+    use EnumTraits;
 
     /**
      * Tributada integralmente
@@ -131,65 +134,32 @@ class TributacaoICMS
      */
     const OUTROS_2 = '900';
     
-   
-    public function getDescricao($codigo): string 
-    {
-        switch ($codigo) {
-            case self::TRIBUTADA_INTEGRALMENTE:
-                return 'Tributada integralmente';
-            case self::TRIBUTACAO_MONOFASICA_PROPRIA_COMBUSTIVEIS:
-                return 'Tributação monofásica própria sobre combustíveis';
-            case self::TRIBUTADA_COM_COBRANCA_ICMS_SUBSTITUICAO_TRIBUTARIA:
-                return 'Tributada e com cobrança do ICMS por substituição tributária';
-            case self::TRIBUTACAO_MONOFASICA_PROPRIA_COM_RESPONSAVEL_RETENCAO_COMBUSTIVEIS:
-                return 'Tributação monofásica própria e com responsabilidade pela retenção sobre combustíveis';
-            case self::COM_REDUCAO_BASE_CALCULO:
-                return 'Com redução de base de cálculo';
-            case self::ISENTA_NAO_TRIBUTADA_COM_COBRANCA_ICMS_SUBSTITUICAO_TRIBUTARIA:
-                return 'Isenta ou não tributada e com cobrança do ICMS por substituição tributária';
-            case self::ISENTA:
-                return 'Isenta';
-            case self::NAO_TRIBUTADA:
-                return 'Não tributada';
-            case self::SUSPENSAO:
-                return 'Suspensão';
-            case self::DIFERIMENTO:
-                return 'Diferimento';
-            case self::TRIBUTACAO_MONOFASICA_COMBUSTIVEIS_RECOLHIMENTO_DIFERIDO:
-                return 'Tributação monofásica sobre combustíveis com recolhimento diferido';
-            case self::ICMS_COBRADO_ANTERIORMENTE_SUBSTITUICAO_TRIBUTARIA:
-                return 'ICMS cobrado anteriormente por substituição tributária';
-            case self::TRIBUTACAO_MONOFASICA_COMBUSTIVEIS_COBRADA_ANTERIORMENTE:
-                return 'Tributação monofásica sobre combustíveis cobrada anteriormente';
-            case self::COM_REDUCAO_BASE_CALCULO_COBRANCA_ICMS_SUBSTITUICAO_TRIBUTARIA:
-                return 'Com redução de base de cálculo e cobrança do ICMS por substituição tributária';
-            case self::OUTROS:
-                return 'Outros';
-            case self::TRIBUTADA_SIMPLES_NACIONAL_PERMISSAO_CREDITO:
-                return 'Tributada pelo Simples Nacional com permissão de crédito';
-            case self::TRIBUTADA_SIMPLES_NACIONAL_SEM_PERMISSAO_CREDITO:
-                return 'Tributada pelo Simples Nacional sem permissão de crédito';
-            case self::ISENCAO_ICMS_SIMPLES_NACIONAL_FAIXA_RECEITA_BRUTA:
-                return 'Isenção do ICMS  no Simples Nacional para faixa de receita bruta';
-            case self::IMUNE:
-                return 'Imune';
-            case self::NAO_TRIBUTADA_SIMPLES_NACIONAL:
-                return 'Não tributada pelo Simples Nacional';
-            case self::TRIBUTADA_SIMPLES_NACIONAL_PERMISSAO_CREDITO_COBRANCA_ICMS_SUBSTITUICAO_TRIBUTARIA:
-                return 'Tributada pelo Simples Nacional com permissão de crédito e com cobrança do ICMS por Substituição Tributária';
-            case self::TRIBUTADA_SIMPLES_NACIONAL_SEM_PERMISSAO_CREDITO_COBRANCA_ICMS_SUBSTITUICAO_TRIBUTARIA:
-                return 'Tributada pelo Simples Nacional sem permissão de crédito e com cobrança do ICMS por Substituição Tributária';
-            case self::ISENCAO_ICMS_SIMPLES_NACIONAL_FAIXA_RECEITA_BRUTA_COBRANCA_ICMS_SUBSTITUICAO_TRIBUTARIA:
-                return 'Isenção do ICMS nos Simples Nacional para faixa de receita bruta e com cobrança do ICMS por Substituição Tributária';
-            case self::ICMS_COBRADO_ANTERIORMENTE_SUBSTITUICAO_TRIBUTARIA_SUBSTITUIDO_OU_ANTICIPACAO:
-                return 'ICMS cobrado anteriormente por substituição tributária (substituído) ou por antecipação';
-            case self::OUTROS_2:
-                return 'Outros';
-            default:
-                return '';
-
-        }
-
-    }
+    const DESCRICOES = [
+        self::TRIBUTADA_INTEGRALMENTE => 'Tributada integralmente',
+        self::TRIBUTACAO_MONOFASICA_PROPRIA_COMBUSTIVEIS => 'Tributação monofásica própria sobre combustíveis',
+        self::TRIBUTADA_COM_COBRANCA_ICMS_SUBSTITUICAO_TRIBUTARIA => 'Tributada e com cobrança do ICMS por substituição tributária',
+        self::TRIBUTACAO_MONOFASICA_PROPRIA_COM_RESPONSAVEL_RETENCAO_COMBUSTIVEIS => 'Tributação monofásica própria e com responsabilidade pela retenção sobre combustíveis',
+        self::COM_REDUCAO_BASE_CALCULO => 'Com redução de base de cálculo',
+        self::ISENTA_NAO_TRIBUTADA_COM_COBRANCA_ICMS_SUBSTITUICAO_TRIBUTARIA => 'Isenta ou não tributada e com cobrança do ICMS por substituição tributária',
+        self::ISENTA => 'Isenta',
+        self::NAO_TRIBUTADA => 'Não tributada',
+        self::SUSPENSAO => 'Suspensão',
+        self::DIFERIMENTO => 'Diferimento',
+        self::TRIBUTACAO_MONOFASICA_COMBUSTIVEIS_RECOLHIMENTO_DIFERIDO => 'Tributação monofásica sobre combustíveis com recolhimento diferido',
+        self::ICMS_COBRADO_ANTERIORMENTE_SUBSTITUICAO_TRIBUTARIA => 'ICMS cobrado anteriormente por substituição tributária',
+        self::TRIBUTACAO_MONOFASICA_COMBUSTIVEIS_COBRADA_ANTERIORMENTE => 'Tributação monofásica sobre combustíveis cobrada anteriormente',
+        self::COM_REDUCAO_BASE_CALCULO_COBRANCA_ICMS_SUBSTITUICAO_TRIBUTARIA => 'Com redução de base de cálculo e cobrança do ICMS por substituição tributária',
+        self::OUTROS => 'Outros',
+        self::TRIBUTADA_SIMPLES_NACIONAL_PERMISSAO_CREDITO => 'Tributada pelo Simples Nacional com permissão de crédito',
+        self::TRIBUTADA_SIMPLES_NACIONAL_SEM_PERMISSAO_CREDITO => 'Tributada pelo Simples Nacional sem permissão de crédito',
+        self::ISENCAO_ICMS_SIMPLES_NACIONAL_FAIXA_RECEITA_BRUTA => 'Isenção do ICMS  no Simples Nacional para faixa de receita bruta',
+        self::IMUNE => 'Imune',
+        self::NAO_TRIBUTADA_SIMPLES_NACIONAL => 'Não tributada pelo Simples Nacional',
+        self::TRIBUTADA_SIMPLES_NACIONAL_PERMISSAO_CREDITO_COBRANCA_ICMS_SUBSTITUICAO_TRIBUTARIA => 'Tributada pelo Simples Nacional com permissão de crédito e com cobrança do ICMS por Substituição Tributária',
+        self::TRIBUTADA_SIMPLES_NACIONAL_SEM_PERMISSAO_CREDITO_COBRANCA_ICMS_SUBSTITUICAO_TRIBUTARIA => 'Tributada pelo Simples Nacional sem permissão de crédito e com cobrança do ICMS por Substituição Tributária',
+        self::ISENCAO_ICMS_SIMPLES_NACIONAL_FAIXA_RECEITA_BRUTA_COBRANCA_ICMS_SUBSTITUICAO_TRIBUTARIA => 'Isenção do ICMS nos Simples Nacional para faixa de receita bruta e com cobrança do ICMS por Substituição Tributária',
+        self::ICMS_COBRADO_ANTERIORMENTE_SUBSTITUICAO_TRIBUTARIA_SUBSTITUIDO_OU_ANTICIPACAO => 'ICMS cobrado anteriormente por substituição tributária (substituído) ou por antecipação',
+        self::OUTROS_2 => 'Outros',
+    ];
 
 }

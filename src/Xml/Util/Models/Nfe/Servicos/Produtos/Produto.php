@@ -201,55 +201,5 @@ class Produto {
         }
 
     }
-    /**
-    * Faz a converssão de classe php para Object.
-    *
-    *
-    * @return object
-    */
-    public function toObject(){
-        $return = new \stdClass();
-        $return->codigo_produto = $this->codigo_produto;
-        $return->codigo_barras_gtin = $this->codigo_barras_gtin;
-        $return->codigo_barras = $this->codigo_barras;
-        $return->descricao_produto = $this->descricao_produto;
-        $return->ncm = $this->ncm;
-        $return->ex_tipi = $this->ex_tipi;
-        $return->cfop = $this->cfop;
-        $return->unidade_comercial = $this->unidade_comercial;
-        $return->quantidade_comercial = $this->quantidade_comercial;
-        $return->valor_unitario_comercial = $this->valor_unitario_comercial;
-        $return->valor_total_bruto = $this->valor_total_bruto;
-        $return->gtin_unidade = $this->gtin_unidade;
-        $return->codigo_barras_unidade_tributavel = $this->codigo_barras_unidade_tributavel;
-        $return->unidade_tributavel = $this->unidade_tributavel;
-        $return->quantidade_tributavel = $this->quantidade_tributavel;
-        $return->valor_unitario_tributavel = $this->valor_unitario_tributavel;
-        $return->valor_total_frete = $this->valor_total_frete;
-        $return->valor_total_seguro = $this->valor_total_seguro;
-        $return->valor_total_desconto = $this->valor_total_desconto;
-        $return->outras_despesas_acessorias = $this->outras_despesas_acessorias;
-        $return->valor_compoe_total_nf = $this->valor_compoe_total_nf;
-        $return->tipo_item = $this->tipo_item;
-        $return->destaca_produto_perigoso = $this->destaca_produto_perigoso;
-        $return->pedido_compra = $this->pedido_compra;
-        $return->numero_item_pedido_compra = $this->numero_item_pedido_compra;
-        $return->ficha_conteudo_importacao = $this->ficha_conteudo_importacao;
-        $return->numero_do_recopi = $this->numero_do_recopi;
-        $return->codigo_cest = $this->codigo_cest;
-        $return->indicador_escala_relevante = $this->indicador_escala_relevante;
-        $return->cnpj_fabricante = $this->cnpj_fabricante;
-        $return->codigo_beneficio_fiscal_uf = $this->codigo_beneficio_fiscal_uf;
-        $return->nve = $this->nve;
-        $return->grupo_declaracao_importacao = $this->grupo_declaracao_importacao;
-        $return->grupo_adicoes_nfe = $this->grupo_adicoes_nfe;
-        $return->informacoes_exportacao = $this->informacoes_exportacao;
-        $return->detalhamento_especifico_de_veiculos_novos = $this->detalhamento_especifico_de_veiculos_novos;
-        $return->detalhamento_especifico_armamento = $this->detalhamento_especifico_armamento;
-        $return->detalhamento_especifico_combustiveis = $this->detalhamento_especifico_combustiveis;
-        $return->detalhamento_produto_sujeito_a_rastreabilidade = $this->detalhamento_produto_sujeito_a_rastreabilidade;
-
-        return $return;
-    }
 
 }

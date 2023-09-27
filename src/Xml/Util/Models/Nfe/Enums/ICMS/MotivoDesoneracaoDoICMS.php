@@ -1,10 +1,12 @@
 <?php
 
 namespace Xml\Util\Models\Nfe\Enums\ICMS;
+use Xml\Util\Models\Nfe\Enums\Traits\EnumTraits;
 
 class MotivoDesoneracaoDoICMS
 {
-    
+    use EnumTraits;
+
     /**
      * Táxi
      */
@@ -67,40 +69,19 @@ class MotivoDesoneracaoDoICMS
     const OLIMPIADAS_RIO_2016 = 16;
 
 
-
-   
-
-    public function getDescricao(int $codigo): string
-    {
-        switch ($codigo) {
-            case self::TAXI:
-                return 'Táxi';
-            case self::DEFICIENTE_FISICO:
-                return 'Deficiente Físico';
-            case self::PRODUTOR_AGROPECUARIO:
-                return 'Produtor Agropecuário';
-            case self::FROTISTA_LOCADORA:
-                return 'Frotista/Locadora';
-            case self::DIPLOMATICO_CONSULAR:
-                return 'Diplomático/Consular';
-            case self::UTILITARIOS_MOTOCICLETAS_AMAZONIA_OCIDENTAL:
-                return 'Utilitários e Motocicletas da Amazônia Ocidental e Áreas de Livre Comércio (Resolução 714/88 e 790/94 – CONTRAN e suas alterações)';
-            case self::SUFRAMA:
-                return 'SUFRAMA';
-            case self::VENDA_ORGAOS_PUBLICOS:
-                return 'Venda a Órgãos públicos (NT2011/004)';
-            case self::OUTROS:
-                return 'outros (NT2011/004)';
-            case self::DEFICIENTE_CONDUTOR:
-                return 'Deficiente Condutor (Convênio ICMS 38/12)';
-            case self::DEFICIENTE_NAO_CONDUTOR:
-                return 'Deficiente Não Condutor (Convênio ICMS 38/12)';
-            case self::OLIMPIADAS_RIO_2016:
-                return 'Olimpíadas Rio 2016';
-            default:
-                return '';
-            
-        }
-    }
-
+    const DESCRICOES = [
+        self::TAXI => 'Táxi',
+        self::DEFICIENTE_FISICO => 'Deficiente Físico',
+        self::PRODUTOR_AGROPECUARIO => 'Produtor Agropecuário',
+        self::FROTISTA_LOCADORA => 'Frotista/Locadora',
+        self::DIPLOMATICO_CONSULAR => 'Diplomático/Consular',
+        self::UTILITARIOS_MOTOCICLETAS_AMAZONIA_OCIDENTAL => 'Utilitários e Motocicletas da Amazônia Ocidental e Áreas de Livre Comércio (Resolução 714/88 e 790/94 – CONTRAN e suas alterações)',
+        self::SUFRAMA => 'SUFRAMA',
+        self::VENDA_ORGAOS_PUBLICOS => 'Venda a Órgãos públicos (NT2011/004)',
+        self::OUTROS => 'outros (NT2011/004)',
+        self::DEFICIENTE_CONDUTOR => 'Deficiente Condutor (Convênio ICMS 38/12)',
+        self::DEFICIENTE_NAO_CONDUTOR => 'Deficiente Não Condutor (Convênio ICMS 38/12)',
+        self::OLIMPIADAS_RIO_2016 => 'Olimpíadas Rio 2016',
+    ];
+    
 }

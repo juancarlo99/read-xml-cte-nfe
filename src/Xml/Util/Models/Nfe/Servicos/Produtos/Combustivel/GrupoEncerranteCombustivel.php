@@ -44,21 +44,5 @@ class GrupoEncerranteCombustivel {
         return $grupoIndicadorOrigemCombustivel->toObject();
     }
 
-    /**
-    * Faz a converssão de classe php para Object.
-    *
-    *
-    * @return object
-    */
-    public function toObject(){
-        $return = new \stdClass();
-        $return->numero_identidicacao_bico = $this->numero_identidicacao_bico;
-        $return->numero_identidicacao_bomba = $this->numero_identidicacao_bomba;
-        $return->numero_identidicacao_tanque = $this->numero_identidicacao_tanque;
-        $return->valor_encerrante_no_inicio_do_abastecimento = $this->valor_encerrante_no_inicio_do_abastecimento;
-        $return->valor_encerrante_no_fim_do_abastecimento = $this->valor_encerrante_no_fim_do_abastecimento;
-
-        return $return;
-    }
 
 }

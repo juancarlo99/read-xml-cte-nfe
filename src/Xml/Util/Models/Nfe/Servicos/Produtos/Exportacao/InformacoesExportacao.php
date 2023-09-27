@@ -34,18 +34,4 @@ class InformacoesExportacao {
         
     }
 
-    /**
-    * Faz a converssão de classe php para Object.
-    *
-    *
-    * @return object
-    */
-    public function toObject(){
-        $return = new \stdClass();
-        $return->numero_draw = $this->numero_draw;
-        $return->exportacao_indireta = $this->exportacao_indireta;
-
-        return $return;
-    }
-
 }

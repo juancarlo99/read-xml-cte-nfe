@@ -27,19 +27,5 @@ class GrupoIndicadorOrigemCombustivel {
         ]);
     }
 
-    /**
-    * Faz a converssão de classe php para Object.
-    *
-    *
-    * @return object
-    */
-    public function toObject(){
-        $return = new \stdClass();
-        $return->indicador_importacao = $this->indicador_importacao;
-        $return->uf = $this->uf;
-        $return->percentual_original_pela_uf = $this->percentual_original_pela_uf;
-
-        return $return;
-    }
 
 }

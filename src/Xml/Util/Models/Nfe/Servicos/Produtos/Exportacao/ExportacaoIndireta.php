@@ -27,20 +27,4 @@ class ExportacaoIndireta {
             'quantidade_items_relmente_exportados' => 'qExport',
         ]);
     }
-
-    /**
-    * Faz a converssão de classe php para Object.
-    *
-    *
-    * @return object
-    */
-    public function toObject(){
-        $return = new \stdClass();
-        $return->numero_registro_exportacao = $this->numero_registro_exportacao;
-        $return->chave_nfe_para_exportacao = $this->chave_nfe_para_exportacao;
-        $return->quantidade_items_relmente_exportados = $this->quantidade_items_relmente_exportados;
-
-        return $return;
-    }
-
 }

@@ -52,29 +52,4 @@ class GrupoDeclaracaoImportacao {
         ]);
     }
 
-    /**
-    * Faz a converssão de classe php para Object.
-    *
-    *
-    * @return object
-    */
-    public function toObject(){
-        $return = new \stdClass();
-        $return->numero_declaracao_importacao = $this->numero_declaracao_importacao;
-        $data_registro = $this->data_registro ? \DateTime::createFromFormat('Y-m-d', $this->data_registro) : null;
-        $return->data_registro = $data_registro ? $data_registro->format('Y-m-d H:i:s') : null;
-        $return->local_desembaraco = $this->local_desembaraco;
-        $return->uf_desembaraco = $this->uf_desembaraco;
-        $return->codigo_exportador = $this->codigo_exportador;
-        $data_desembaraco = $this->data_desembaraco ? \DateTime::createFromFormat('Y-m-d', $this->data_desembaraco) : null;
-        $return->data_desembaraco = $data_desembaraco ? $data_desembaraco->format('Y-m-d H:i:s') : null;
-        $return->via_transporte = $this->via_transporte;
-        $return->valor_da_afrmm = $this->valor_da_afrmm;
-        $return->tipo_intermediacao = $this->tipo_intermediacao;
-        $return->cnpj_adquirente = $this->cnpj_adquirente;
-        $return->uf_adquirente = $this->uf_adquirente;
-
-        return $return;
-    }
-
 }
