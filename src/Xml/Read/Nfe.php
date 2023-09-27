@@ -9,6 +9,8 @@ use Xml\Util\Models\Nfe\Entidade;
 use Xml\Util\Models\Nfe\IdentificacaoNFE;
 use Xml\Util\Models\Nfe\Servicos\Servicos;
 use Xml\Util\Models\Nfe\Transporte\Transporte;
+use Xml\Util\Models\Nfe\InformacoesAdicionais\InformacoesAdicionais;
+use Xml\Util\Models\Nfe\InformacoesResponsavelTecnico\InformacoesResponsavelTecnico;
 
 
 class Nfe {
@@ -17,8 +19,17 @@ class Nfe {
     private object $xml_objct;
     private object $xml_objct_raiz;
 
-    public object $identificacao_nfe;
-    public object $emitente;
+    public string | null $chave;
+    public object | null $identificacao_nfe;
+    public object | null $emitente;
+    public object | null $destinatario;
+    public object | null $expedidor;
+    public object | null $servicos;
+    public object | null $totais;
+    public object | null $cobranca;
+    public object | null $transporte;
+    public object | null $informacoes_adicionais;
+    public object | null $informacoes_responsavel_tecnico;
 
     function __construct( string $xml_file){
 
@@ -46,6 +57,7 @@ class Nfe {
 
         $this->chave = $this->getChave();
         $this->identificacao_nfe = $this->getIdentificacaoNFE();
+        $this->informacoes_adicionais = $this->getInformacoesAdicionais();
         $this->emitente = $this->getEmitente();
         $this->destinatario = $this->getDestinatario();
         $this->expedidor = $this->getExpedidor();
@@ -53,9 +65,11 @@ class Nfe {
         $this->totais = $this->getTotal();
         $this->cobranca = $this->getCobranca();
         $this->transporte = $this->getTransporte();
+        $this->informacoes_responsavel_tecnico = $this->getInformacoesResponsavelTecnico();
 
         $resultado->chave = $this->chave;
         $resultado->identificacao_nfe = $this->identificacao_nfe;
+        $resultado->informacoes_adicionais = $this->informacoes_adicionais;
         $resultado->emitente = $this->emitente;
         $resultado->destinatario = $this->destinatario;
         $resultado->servicos = $this->servicos;
@@ -63,22 +77,34 @@ class Nfe {
         $resultado->totais = $this->totais;
         $resultado->cobranca = $this->cobranca;
         $resultado->transporte = $this->transporte;
+        $resultado->informacoes_responsavel_tecnico = $this->informacoes_responsavel_tecnico;
 
         return $resultado;
     }
 
-    public function getIdentificacaoNFE(): object|bool
+    public function getIdentificacaoNFE(): object|null
     {   
         if(isset($this->xml_objct->infnfe->ide)){
             $dados = new IdentificacaoNFE($this->xml_objct->infnfe->ide);
             return $dados->toObject();
         }
 
-        return false;
+        return null;
 
     }
 
-    public function getEmitente(): object|bool
+    public function getInformacoesAdicionais(): object|null
+    {   
+        if(isset($this->xml_objct->infnfe->infadic)){
+            $dados = new InformacoesAdicionais($this->xml_objct->infnfe->infadic);
+            return $dados->toObject();
+        }
+
+        return null;
+
+    }
+
+    public function getEmitente(): object|null
     {
       
         if(isset($this->xml_objct->infnfe->emit)){
@@ -86,10 +112,10 @@ class Nfe {
             return $entidade->toObject();
         }
 
-        return false;
+        return null;
     }
 
-    public function getRemetente(): object|bool
+    public function getRemetente(): object|null
     {
 
         if(isset($this->xml_objct->infnfe->rem)){
@@ -97,10 +123,10 @@ class Nfe {
             return $entidade->toObject();
         }
 
-        return false;
+        return null;
     }
 
-    public function getDestinatario(): object|bool
+    public function getDestinatario(): object|null
     {
 
         if(isset($this->xml_objct->infnfe->dest)){
@@ -108,11 +134,11 @@ class Nfe {
             return $entidade->toObject();
         }
 
-        return false;
+        return null;
  
     }
 
-    public function getExpedidor(): object|bool
+    public function getExpedidor(): object|null
     {
       
         if(isset($this->xml_objct->infnfe->exped)){
@@ -120,11 +146,11 @@ class Nfe {
             return $entidade->toObject();
         }
 
-        return false;
+        return null;
  
     }
 
-    public function getRecebedor(): object|bool
+    public function getRecebedor(): object|null
     {
       
         if(isset($this->xml_objct->infnfe->receb)){
@@ -132,11 +158,11 @@ class Nfe {
             return $entidade->toObject();
         }
 
-        return false;
+        return null;
  
     }
 
-    public function getServicos(): object|bool
+    public function getServicos(): object|null
     {
       
         if(isset($this->xml_objct->infnfe->det)){
@@ -144,11 +170,11 @@ class Nfe {
             return $entidade->toObject();
         }
 
-        return false;
+        return null;
  
     }
 
-    public function getTransporte(): object|bool
+    public function getTransporte(): object|null
     {
       
         if(isset($this->xml_objct->infnfe->transp)){
@@ -156,11 +182,11 @@ class Nfe {
             return $transporte->toObject();
         }
 
-        return false;
+        return null;
  
     }
 
-    public function getTotal(): object|bool
+    public function getTotal(): object|null
     {
       
         if(isset($this->xml_objct->infnfe->total)){
@@ -168,11 +194,11 @@ class Nfe {
             return $total->toObject();
         }
 
-        return false;
+        return null;
  
     }
 
-    public function getCobranca(): object|bool
+    public function getCobranca(): object|null
     {
       
         if(isset($this->xml_objct->infnfe->cobr)){
@@ -180,10 +206,21 @@ class Nfe {
             return $entidade->toObject();
         }
 
-        return false;
+        return null;
 
     }
 
+    public function getInformacoesResponsavelTecnico(): object|null
+    {
+      
+        if(isset($this->xml_objct->infnfe->infresptec)){
+            $info = new InformacoesResponsavelTecnico($this->xml_objct->infnfe->infresptec);
+            return $info->toObject();
+        }
+
+        return null;
+
+    }
     public function getChave(): string
     {   
 
@@ -191,7 +228,7 @@ class Nfe {
             return trim( ( string ) $this->xml_objct_raiz->protnfe->infprot->chnfe );
         }
 
-        return "";
+        return null;
       
     }
 }
