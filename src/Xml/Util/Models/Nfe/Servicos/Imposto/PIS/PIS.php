@@ -23,8 +23,11 @@ class PIS {
         'quantidade_vendida',
         'aliquota_do_pis_em_reais',
     ];
-    
 
+    protected $tipos_bool = [
+        'valor_soma_pis_compoe_total_nota'
+    ];
+    
 
     function __construct( object $xml, string $grupo){
 
@@ -38,6 +41,7 @@ class PIS {
             'valor_do_pis' => 'vpis',
             'quantidade_vendida' => 'qbcprod',
             'aliquota_do_pis_em_reais' => 'valiqprod',
+            'valor_soma_pis_compoe_total_nota' => 'indsomapisst'
         ]);
         
     }

@@ -29,21 +29,32 @@ class Totais {
 
     public function getTotaisICMS()
     {
+        if(!$this->xml->icmstot){
+            return;
+        }
+
         $icms = new ICMS($this->xml->icmstot);
         $this->icms = $icms->toObject();
     }
 
     public function getTotaisISSQ()
-    {
+    {   
+        if(!$this->xml->issqntot){
+            return;
+        }
+
         $issq = new ISSQ($this->xml->issqntot);
         $this->issq = $issq->toObject();
     }
     
     public function getTotaisRetencaoTributosFederais()
     {
+        if(!$this->xml->rettrib){
+            return;
+        }
+
         $retencao_tributos_federais = new RetencaoTributosFederais($this->xml->rettrib);
         $this->retencao_tributos_federais = $retencao_tributos_federais->toObject();
-
     }
 
 }

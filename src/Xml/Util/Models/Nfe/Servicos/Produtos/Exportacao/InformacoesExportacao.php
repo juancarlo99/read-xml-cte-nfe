@@ -27,10 +27,10 @@ class InformacoesExportacao {
 
     public function getExportacaoIndireta()
     {
-        if($this->xml->exportind){
+        // if($this->xml->exportind){
             $model = new ExportacaoIndireta($this->xml->exportind);
             $this->exportacao_indireta = $model->toObject();
-        }
+        // }
         
     }
 

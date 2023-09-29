@@ -39,17 +39,4 @@ class ImpostoDevolucao {
 
     }
 
-    
-    /**
-    * Faz a converssão de classe php para Object.
-    * @return object
-    */
-    public function toObject(){
-        $return = new \stdClass();
-        $return->percentual_de_mercadoria_devolvida = $this->percentual_de_mercadoria_devolvida;
-        $return->valor_do_ipi_devolvido = $this->valor_do_ipi_devolvido;
-
-        return $return;
-    }
-
 }

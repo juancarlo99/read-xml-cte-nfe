@@ -24,7 +24,7 @@ class COFINS {
         'aliquota_do_cofins_em_reais',
     ];
 
-    protected $tipos_boolean = [
+    protected $tipos_bool = [
         'valor_soma_cofins_compoe_total_nota'
     ];
     

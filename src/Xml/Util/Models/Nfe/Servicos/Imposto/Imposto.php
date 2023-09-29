@@ -10,6 +10,7 @@ use Xml\Util\Models\Nfe\Servicos\Imposto\PIS\PIS;
 use Xml\Util\Models\Nfe\Servicos\Imposto\COFINS\COFINS;
 use Xml\Util\Models\Nfe\Servicos\Imposto\ISSQN\ISSQN;
 use Xml\Util\Models\Nfe\Servicos\Imposto\COFINSST\COFINSST;
+use Xml\Util\Models\Nfe\Servicos\Imposto\Importacao\Importacao;
 
 
 class Imposto {
@@ -18,7 +19,7 @@ class Imposto {
     private object $xml;
     public string $tipo_icms;
 
-    public string | null $valor_total_tributos;
+    public float | null $valor_total_tributos;
 
     public object | null $icms = null;
     public object | null $ipi = null;
@@ -26,6 +27,11 @@ class Imposto {
     public object | null $cofins = null;
     public object | null $cofinsst = null;
     public object | null $issqn = null;
+    public object | null $importacao = null;
+
+    protected $tipos_float = [
+        'valor_total_tributos',
+    ];
 
     function __construct( object $xml){
 
@@ -41,6 +47,8 @@ class Imposto {
         $this->getCOFINS();
         $this->getCOFINSST();
         $this->getISSQN();
+        $this->getImportacao();
+
     }
 
     
@@ -127,22 +135,13 @@ class Imposto {
         }
     }
 
-
-    /**
-    * Faz a converssão de classe php para Object.
-    * @return object
-    */
-    public function toObject(){
-        $return = new \stdClass();
-        $return->valor_total_tributos = $this->valor_total_tributos;
-        $return->icms = $this->icms;
-        $return->ipi = $this->ipi;
-        $return->pis = $this->pis;
-        $return->cofins = $this->cofins;
-        $return->cofinsst = $this->cofinsst;
-        $return->issqn = $this->issqn;
-      
-        return $return;
+    public function getImportacao()
+    {
+        if($this->xml->ii){
+            $importacao_ob = new Importacao($this->xml->ii);
+            $this->importacao = $importacao_ob->toObject();
+        }
     }
+
 
 }

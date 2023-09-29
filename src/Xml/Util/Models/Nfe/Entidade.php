@@ -13,7 +13,7 @@ class Entidade {
     private object $xml;
     private string $type;
     public string | null $cnpj;
-    public string | null $iscricao_estadual;
+    public string | null $inscricao_estadual;
     public string | null $nome;
     public string | null $fone;
     public string | null $email;
@@ -45,7 +45,7 @@ class Entidade {
             'nome_fantasia' => 'xFant',
             'cnpj' => 'cnpj',
             'cpf' => 'cpf',
-            'iscricao_estadual'   => 'ie',
+            'inscricao_estadual' => 'ie',
             'codigo_regime_tributario'  => 'crt',
             'fone' => 'fone',
             'email' => 'email',

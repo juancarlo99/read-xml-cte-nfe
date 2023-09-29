@@ -12,4 +12,6 @@ trait PIS
     public float | null $quantidade_vendida;
     public float | null $aliquota_do_pis_em_reais;
 
+    public bool | null $valor_soma_pis_compoe_total_nota;
+
 }
