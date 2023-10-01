@@ -42,7 +42,7 @@ class Entidade {
         $this->getAtribute([
 
             'nome' => 'xnome',
-            'nome_fantasia' => 'xFant',
+            'nome_fantasia' => 'xfant',
             'cnpj' => 'cnpj',
             'cpf' => 'cpf',
             'iscricao_estadual'   => 'ie',
