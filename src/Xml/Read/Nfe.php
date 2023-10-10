@@ -41,7 +41,12 @@ class Nfe {
 
         $util->ValidateFile($xml_file, 'xml');
 
-        $this->xml_objct = simplexml_load_string($util->getContent());
+        try{
+            $this->xml_objct = simplexml_load_string($util->getContent());
+
+        }catch(\Exception $e){
+            throw new \Exception('Erro ao ler o arquivo xml! Não é do tipo NFE');
+        }
         
         $util->validateIsCteOrNfe($this->xml_objct, 'nfe');
 
