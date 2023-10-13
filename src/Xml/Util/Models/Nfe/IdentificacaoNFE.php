@@ -71,7 +71,7 @@ class IdentificacaoNFE {
         $this->xml = $xml;
 
         $this->getAtribute([
-            'codigo_numerico' => 'cNF',
+            'codigo_numerico' => 'cnf',
             'uf' => 'cuf',
             'cfop' => 'cfop',
             'natureza_operacao' => 'natop',
