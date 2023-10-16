@@ -124,13 +124,10 @@ class Imposto {
     public function getISSQN()
     {
 
-        foreach($this->xml->issqn as $issqn){
+        foreach($this->xml->issqn as $grupo =>$issqn){
             if($issqn){
-                foreach ($issqn as $grupo => $issqn_xml) {
-                    $issqn_ob = new ISSQN($issqn_xml, $grupo);
-                    $this->issqn = $issqn_ob->toObject();
-                }
-
+                $issqn_ob = new ISSQN($issqn, $grupo);
+                $this->issqn = $issqn_ob->toObject();
             }
         }
     }

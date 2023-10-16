@@ -25,7 +25,6 @@ class Fatura {
     function __construct( object $xml){
 
         $this->xml = $xml;
-
         $this->getAtribute([
             'numero_fatura' => 'nfat',
             'valor_original' => 'vorig',

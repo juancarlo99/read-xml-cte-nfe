@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Xml\Util\Models\Nfe\Servicos\Imposto\COFINS;
+namespace Xml\Util\Models\Nfe\Servicos\Imposto\ISSQN;
 
 use Xml\Util\Models\Traits\Atributes;
 use Xml\Util\Models\Traits\ISSQN as ISSQNTraits;
