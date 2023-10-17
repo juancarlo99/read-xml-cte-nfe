@@ -48,11 +48,17 @@ class Nfe {
             throw new \Exception('Erro ao ler o arquivo xml! Não é do tipo NFE');
         }
         
-        $util->validateIsCteOrNfe($this->xml_objct, 'nfe');
-
         $this->xml_objct_raiz = $this->xml_objct;
 
-        $this->xml_objct = $this->xml_objct->nfe;
+        try{
+            $util->validateIsCteOrNfe($this->xml_objct, 'nfe');
+            $this->xml_objct = $this->xml_objct->nfe;
+
+        }catch(\Exception $e){
+            $util->validateIsCteOrNfe($this->xml_objct, '');
+        }
+
+
 
     }
 
@@ -111,7 +117,6 @@ class Nfe {
 
     public function getEmitente(): object|null
     {
-      
         if(isset($this->xml_objct->infnfe->emit)){
             $entidade = new Entidade($this->xml_objct->infnfe->emit, 'emit');
             return $entidade->toObject();
@@ -233,7 +238,7 @@ class Nfe {
             return trim( ( string ) $this->xml_objct_raiz->protnfe->infprot->chnfe );
         }
 
-        return null;
+        return '';
       
     }
 }

@@ -63,7 +63,7 @@ class Util {
     public function validateIsCteOrNfe(object $cte, string $type): void
     {
 
-        if(!isset($cte->$type)) {
+        if($type != '' && !isset($cte->$type)) {
             throw new \Exception("O arquivo não é do tipo $type!");
         }
         
