@@ -70,36 +70,77 @@ class IdentificacaoNFE {
 
         $this->xml = $xml;
 
-        $this->getAtribute([
-            'codigo_numerico' => 'cNF',
-            'uf' => 'cuf',
-            'cfop' => 'cfop',
-            'natureza_operacao' => 'natop',
-            'modelo_nfe' => 'mod',
-            'serie' => 'serie',
-            'numero_nfe' => 'nnf', 
-            'data_emissao' => 'dhemi', 
-            'fuso_horario' => 'fusohorario',
-            'data_saida_entrada' => 'dhsaient',
-            'tipo_operacao' => 'tpnf',
-            'local_destino_operacao' => 'iddest',
-            'operacao_consumidor_final' => 'indfinal',
-            'operacao_presenca_comprador' => 'indpres',
-            'indentificador_de_intermediador' => 'indintermed',
-            'codigo_municipio_icms' => 'cmunfg',
-            'tipo_impressao' => 'tpimp',
-            'tipo_emissao' => 'tpemis', 
-            'tipo_ambiente' => 'tpamb',
-            'Justificativa_entrada_contingencia' => 'xjust',
-            'data_entrada_contingencia' => 'dhcont',
-            'finalidade_emissao' => 'finnfe',
-            'email_para_recebimento_arquivos' => 'Emailarquivos',
-            'numero_pedido' => 'numeropedido',
-            'processo_emissao' => 'procemi',
-            'versao_processo_emissao' => 'verproc',
-            'digito_verificador' => 'cdv',
+        $tipo =  (int) $this->xml->mod;
 
-        ]);
+        if($tipo == 55 || $tipo == 65 ){
+            $this->getAtribute([
+                'codigo_numerico' => 'cNF',
+                'uf' => 'cuf',
+                'cfop' => 'cfop',
+                'natureza_operacao' => 'natop',
+                'modelo_nfe' => 'mod',
+                'serie' => 'serie',
+                'numero_nfe' => 'nnf', 
+                'data_emissao' => 'dhemi', 
+                'fuso_horario' => 'fusohorario',
+                'data_saida_entrada' => 'dhsaient',
+                'tipo_operacao' => 'tpnf',
+                'local_destino_operacao' => 'iddest',
+                'operacao_consumidor_final' => 'indfinal',
+                'operacao_presenca_comprador' => 'indpres',
+                'indentificador_de_intermediador' => 'indintermed',
+                'codigo_municipio_icms' => 'cmunfg',
+                'tipo_impressao' => 'tpimp',
+                'tipo_emissao' => 'tpemis', 
+                'tipo_ambiente' => 'tpamb',
+                'Justificativa_entrada_contingencia' => 'xjust',
+                'data_entrada_contingencia' => 'dhcont',
+                'finalidade_emissao' => 'finnfe',
+                'email_para_recebimento_arquivos' => 'Emailarquivos',
+                'numero_pedido' => 'numeropedido',
+                'processo_emissao' => 'procemi',
+                'versao_processo_emissao' => 'verproc',
+                'digito_verificador' => 'cdv',
+
+            ]);
+        }
+
+        if($tipo == 59){
+
+            $this->getAtribute([
+                'uf' => 'cuf',
+                'codigo_numerico' => 'cnf',
+                'modelo_nfe' => 'mod',
+                'serie' => 'nseriesat',
+                'numero_nfe' => 'ncfe',
+                'data_emissao' => 'demi',
+                'fuso_horario' => 'fusohorario',
+                'digito_verificador' => 'cdv',
+                'tipo_ambiente' => 'tpamb',
+                'cnpj' => 'cnpj',
+                'assinatura_qrcode' => 'assinaturaqrcode',
+                'numero_caixa' => 'numerocaixa',
+                'cfop' => 'cfop',
+                'natureza_operacao' => 'natop',
+                'data_saida_entrada' => 'dhsaient',
+                'tipo_operacao' => 'tpnf',
+                'local_destino_operacao' => 'iddest',
+                'operacao_consumidor_final' => 'indfinal',
+                'operacao_presenca_comprador' => 'indpres',
+                'indentificador_de_intermediador' => 'indintermed',
+                'codigo_municipio_icms' => 'cmunfg',
+                'tipo_impressao' => 'tpimp',
+                'tipo_emissao' => 'tpemis', 
+                'Justificativa_entrada_contingencia' => 'xjust',
+                'data_entrada_contingencia' => 'dhcont',
+                'finalidade_emissao' => 'finnfe',
+                'email_para_recebimento_arquivos' => 'Emailarquivos',
+                'numero_pedido' => 'numeropedido',
+                'processo_emissao' => 'procemi',
+                'versao_processo_emissao' => 'verproc',
+      
+            ]);
+        }
 
     }
 

@@ -46,6 +46,7 @@ class ICMS {
         $this->getAtribute([
             'origem_mercadoria' => 'orig',
             'tributacao_icms' => 'cst',
+            'tributacao_icms_simples_nacional' => 'csosn',
             'modalidade_de_determinacao_da_bc_do_icms' => 'modbc',
             'valor_da_bc_do_icms' => 'vbc',
             'aliquota_do_icms' => 'picms',

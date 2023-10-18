@@ -69,6 +69,7 @@ trait ICMS
     public float | null $aliquota_ad_rem_do_imposto_retida_anteriormente;
 
     public float | null $valor_do_icms_retido_anteriormente;
+    public string | null $tributacao_icms_simples_nacional;
 
 
 }

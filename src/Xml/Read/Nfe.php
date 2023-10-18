@@ -18,7 +18,7 @@ class Nfe {
 
     private object $xml_objct;
     private object $xml_objct_raiz;
-
+    private string $type_file;
     public string | null $chave;
     public object | null $identificacao_nfe;
     public object | null $emitente;
@@ -53,11 +53,21 @@ class Nfe {
         try{
             $util->validateIsCteOrNfe($this->xml_objct, 'nfe');
             $this->xml_objct = $this->xml_objct->nfe;
+            $this->type_file = 'infnfe';
 
         }catch(\Exception $e){
-            $util->validateIsCteOrNfe($this->xml_objct, '');
+            try{
+                $util->validateIsCteOrNfe($this->xml_objct, 'infcfe');
+                $this->type_file = 'infcfe';
+
+            }catch(\Exception $e){
+                $util->validateIsCteOrNfe($this->xml_objct, '');
+                $this->type_file = 'infnfe';
+            }
+
         }
 
+        
 
 
     }
@@ -95,8 +105,10 @@ class Nfe {
 
     public function getIdentificacaoNFE(): object|null
     {   
-        if(isset($this->xml_objct->infnfe->ide)){
-            $dados = new IdentificacaoNFE($this->xml_objct->infnfe->ide);
+        $type = $this->type_file;
+
+        if(isset($this->xml_objct->$type->ide)){
+            $dados = new IdentificacaoNFE($this->xml_objct->$type->ide);
             return $dados->toObject();
         }
 
@@ -106,8 +118,10 @@ class Nfe {
 
     public function getInformacoesAdicionais(): object|null
     {   
-        if(isset($this->xml_objct->infnfe->infadic)){
-            $dados = new InformacoesAdicionais($this->xml_objct->infnfe->infadic);
+        $type = $this->type_file;
+
+        if(isset($this->xml_objct->$type->infadic)){
+            $dados = new InformacoesAdicionais($this->xml_objct->$type->infadic);
             return $dados->toObject();
         }
 
@@ -117,8 +131,10 @@ class Nfe {
 
     public function getEmitente(): object|null
     {
-        if(isset($this->xml_objct->infnfe->emit)){
-            $entidade = new Entidade($this->xml_objct->infnfe->emit, 'emit');
+        $type = $this->type_file;
+
+        if(isset($this->xml_objct->$type->emit)){
+            $entidade = new Entidade($this->xml_objct->$type->emit, 'emit');
             return $entidade->toObject();
         }
 
@@ -127,9 +143,10 @@ class Nfe {
 
     public function getRemetente(): object|null
     {
+        $type = $this->type_file;
 
-        if(isset($this->xml_objct->infnfe->rem)){
-            $entidade = new Entidade($this->xml_objct->infnfe->rem, 'rem');
+        if(isset($this->xml_objct->$type->rem)){
+            $entidade = new Entidade($this->xml_objct->$type->rem, 'rem');
             return $entidade->toObject();
         }
 
@@ -138,9 +155,10 @@ class Nfe {
 
     public function getDestinatario(): object|null
     {
+        $type = $this->type_file;
 
-        if(isset($this->xml_objct->infnfe->dest)){
-            $entidade = new Entidade($this->xml_objct->infnfe->dest, 'dest');
+        if(isset($this->xml_objct->$type->dest)){
+            $entidade = new Entidade($this->xml_objct->$type->dest, 'dest');
             return $entidade->toObject();
         }
 
@@ -150,9 +168,10 @@ class Nfe {
 
     public function getExpedidor(): object|null
     {
+        $type = $this->type_file;
       
-        if(isset($this->xml_objct->infnfe->exped)){
-            $entidade = new Entidade($this->xml_objct->infnfe->exped, 'exped');
+        if(isset($this->xml_objct->$type->exped)){
+            $entidade = new Entidade($this->xml_objct->$type->exped, 'exped');
             return $entidade->toObject();
         }
 
@@ -162,9 +181,10 @@ class Nfe {
 
     public function getRecebedor(): object|null
     {
+        $type = $this->type_file;
       
-        if(isset($this->xml_objct->infnfe->receb)){
-            $entidade = new Entidade($this->xml_objct->infnfe->receb, 'receb');
+        if(isset($this->xml_objct->$type->receb)){
+            $entidade = new Entidade($this->xml_objct->$type->receb, 'receb');
             return $entidade->toObject();
         }
 
@@ -174,9 +194,10 @@ class Nfe {
 
     public function getServicos(): object|null
     {
+        $type = $this->type_file;
       
-        if(isset($this->xml_objct->infnfe->det)){
-            $entidade = new Servicos($this->xml_objct->infnfe->det);
+        if(isset($this->xml_objct->$type->det)){
+            $entidade = new Servicos($this->xml_objct->$type->det);
             return $entidade->toObject();
         }
 
@@ -186,9 +207,10 @@ class Nfe {
 
     public function getTransporte(): object|null
     {
+        $type = $this->type_file;
       
-        if(isset($this->xml_objct->infnfe->transp)){
-            $transporte = new Transporte($this->xml_objct->infnfe->transp);
+        if(isset($this->xml_objct->$type->transp)){
+            $transporte = new Transporte($this->xml_objct->$type->transp);
             return $transporte->toObject();
         }
 
@@ -198,9 +220,10 @@ class Nfe {
 
     public function getTotal(): object|null
     {
+        $type = $this->type_file;
       
-        if(isset($this->xml_objct->infnfe->total)){
-            $total = new Totais($this->xml_objct->infnfe->total);
+        if(isset($this->xml_objct->$type->total)){
+            $total = new Totais($this->xml_objct->$type->total);
             return $total->toObject();
         }
 
@@ -210,9 +233,10 @@ class Nfe {
 
     public function getCobranca(): object|null
     {
+        $type = $this->type_file;
       
-        if(isset($this->xml_objct->infnfe->cobr)){
-            $entidade = new Cobranca($this->xml_objct->infnfe->cobr);
+        if(isset($this->xml_objct->$type->cobr)){
+            $entidade = new Cobranca($this->xml_objct->$type->cobr);
             return $entidade->toObject();
         }
 
@@ -222,9 +246,10 @@ class Nfe {
 
     public function getInformacoesResponsavelTecnico(): object|null
     {
+        $type = $this->type_file;
       
-        if(isset($this->xml_objct->infnfe->infresptec)){
-            $info = new InformacoesResponsavelTecnico($this->xml_objct->infnfe->infresptec);
+        if(isset($this->xml_objct->$type->infresptec)){
+            $info = new InformacoesResponsavelTecnico($this->xml_objct->$type->infresptec);
             return $info->toObject();
         }
 
@@ -233,6 +258,7 @@ class Nfe {
     }
     public function getChave(): string
     {   
+        $type = $this->type_file;
 
         if(isset($this->xml_objct_raiz->protnfe->infprot->chnfe)){
             return trim( ( string ) $this->xml_objct_raiz->protnfe->infprot->chnfe );
