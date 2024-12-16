@@ -258,13 +258,19 @@ class Nfe {
     }
     public function getChave(): string
     {   
-        $type = $this->type_file;
-
-        if(isset($this->xml_objct_raiz->protnfe->infprot->chnfe)){
-            return trim( ( string ) $this->xml_objct_raiz->protnfe->infprot->chnfe );
+        if (isset($this->xml_objct_raiz->infcfe)) {
+            $att = 'id';
+            $idcfe = (string)$this->xml_objct_raiz->infcfe->attributes()->$att;
+            if($idcfe){
+                return $idcfe;
+            }
         }
 
-        return '';
+        if (isset($this->xml_objct_raiz->protnfe->infprot->chnfe)) {
+            return trim((string)$this->xml_objct_raiz->protnfe->infprot->chnfe);
+        }
+
+        throw new \Exception("Campo chave não encontrado");
       
     }
 }
