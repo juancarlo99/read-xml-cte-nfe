@@ -258,6 +258,7 @@ class Nfe {
     }
     public function getChave(): string
     {   
+        
         if (isset($this->xml_objct_raiz->infcfe)) {
             $att = 'id';
             $idcfe = (string)$this->xml_objct_raiz->infcfe->attributes()->$att;
